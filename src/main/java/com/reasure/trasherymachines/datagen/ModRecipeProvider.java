@@ -1,25 +1,104 @@
 package com.reasure.trasherymachines.datagen;
 
 import com.reasure.trasherymachines.TrasheryMachines;
+import com.reasure.trasherymachines.setup.ModBlocks;
+import com.reasure.trasherymachines.setup.ModItems;
+import com.reasure.trasherymachines.setup.ModTags;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider {
+
     public ModRecipeProvider(DataGenerator generator) {
         super(generator);
     }
 
     @Override
     protected void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
+        oreCooking(consumer, ModTags.Items.ORES_TIN, ModItems.TIN_INGOT.get(), 0.5f, 200, "tin_ingot");
+        oreCooking(consumer, ModTags.Items.RAW_MATERIALS_TIN, ModItems.TIN_INGOT.get(), 0.5f, 200, "tin_ingot");
+        oreCooking(consumer, ModTags.Items.ORES_LEAD, ModItems.LEAD_INGOT.get(), 0.7f, 200, "lead_ingot");
+        oreCooking(consumer, ModTags.Items.RAW_MATERIALS_LEAD, ModItems.LEAD_INGOT.get(), 0.7f, 200, "lead_ingot");
+        oreCooking(consumer, ModTags.Items.ORES_SILVER, ModItems.SILVER_INGOT.get(), 0.9f, 200, "silver_ingot");
+        oreCooking(consumer, ModTags.Items.RAW_MATERIALS_SILVER, ModItems.SILVER_INGOT.get(), 0.9f, 200, "silver_ingot");
 
+        ninePackingWithGroup(consumer, ModTags.Items.NUGGETS_TIN, ModItems.TIN_INGOT.get(), "tin_ingot");
+        unpackingWithGroup(consumer, ModTags.Items.INGOTS_TIN, ModItems.TIN_NUGGET.get(), 9, "tin_nugget");
+        ninePacking(consumer, ModTags.Items.INGOTS_TIN, ModBlocks.TIN_BLOCK.get());
+        unpackingWithGroup(consumer, ModTags.Items.STORAGE_BLOCKS_TIN, ModItems.TIN_INGOT.get(), 9, "tin_ingot");
+        ninePacking(consumer, ModTags.Items.RAW_MATERIALS_TIN, ModBlocks.RAW_TIN_BLOCK.get());
+        unpacking(consumer, ModTags.Items.STORAGE_BLOCKS_RAW_TIN, ModItems.RAW_TIN.get(), 9);
+
+        ninePackingWithGroup(consumer, ModTags.Items.NUGGETS_LEAD, ModItems.LEAD_INGOT.get(), "lead_ingot");
+        unpackingWithGroup(consumer, ModTags.Items.INGOTS_LEAD, ModItems.LEAD_NUGGET.get(), 9, "lead_nugget");
+        ninePacking(consumer, ModTags.Items.INGOTS_LEAD, ModBlocks.LEAD_BLOCK.get());
+        unpackingWithGroup(consumer, ModTags.Items.STORAGE_BLOCKS_LEAD, ModItems.LEAD_INGOT.get(), 9, "lead_ingot");
+        ninePacking(consumer, ModTags.Items.RAW_MATERIALS_LEAD, ModBlocks.RAW_LEAD_BLOCK.get());
+        unpacking(consumer, ModTags.Items.STORAGE_BLOCKS_RAW_LEAD, ModItems.RAW_LEAD.get(), 9);
+
+        ninePackingWithGroup(consumer, ModTags.Items.NUGGETS_SILVER, ModItems.SILVER_INGOT.get(), "silver_ingot");
+        unpackingWithGroup(consumer, ModTags.Items.INGOTS_SILVER, ModItems.SILVER_NUGGET.get(), 9, "silver_nugget");
+        ninePacking(consumer, ModTags.Items.INGOTS_SILVER, ModBlocks.SILVER_BLOCK.get());
+        unpackingWithGroup(consumer, ModTags.Items.STORAGE_BLOCKS_SILVER, ModItems.SILVER_INGOT.get(), 9, "silver_ingot");
+        ninePacking(consumer, ModTags.Items.RAW_MATERIALS_SILVER, ModBlocks.RAW_SILVER_BLOCK.get());
+        unpacking(consumer, ModTags.Items.STORAGE_BLOCKS_RAW_SILVER, ModItems.RAW_SILVER.get(), 9);
+    }
+
+    private void oreCooking(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike result, float experience, int cookingTime, String group) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredients), result, experience, cookingTime).group(group).unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer, modLoc(getItemName(result) + "_from_smelting_" + getTagName(ingredients)));
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredients), result, experience, cookingTime / 2).group(group).unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer, modLoc(getItemName(result) + "_from_blasting_" + getTagName(ingredients)));
+    }
+
+    private void ninePacking(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike result) {
+        ninePacking(consumer, ingredients, result, getItemName(result), null);
+    }
+
+    private void ninePackingWithGroup(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike result, String group) {
+        ninePacking(consumer, ingredients, result, getItemName(result) + "_from_" + getTagName(ingredients), group);
+    }
+
+    private void ninePacking(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike result, String recipeName, String group) {
+        ShapedRecipeBuilder.shaped(result).group(group)
+                .define('#', ingredients)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer, modLoc(recipeName));
+    }
+
+    private void unpacking(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike result, int resulCount) {
+        unpacking(consumer, ingredients, result, resulCount, getItemName(result), null);
+    }
+
+    private void unpackingWithGroup(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike result, int resultCount, String group) {
+        unpacking(consumer, ingredients, result, resultCount, getItemName(result) + "from_" + getTagName(ingredients), group);
+    }
+
+    private void unpacking(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike result, int resultCount, String recipeName, String group) {
+        ShapelessRecipeBuilder.shapeless(result, resultCount).requires(ingredients).group(group).unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer, modLoc(recipeName));
     }
 
     private ResourceLocation modLoc(String path) {
         return new ResourceLocation(TrasheryMachines.MODID, path);
+    }
+
+    private String getTagName(TagKey<Item> tag) {
+        return tag.location().getPath().replace('/', '_');
+    }
+
+    private String getHasName(TagKey<Item> tag) {
+        return "has_" + getTagName(tag);
     }
 }

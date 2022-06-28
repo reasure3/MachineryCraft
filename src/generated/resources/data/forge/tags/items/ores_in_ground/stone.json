@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "trasherymachines:tin_ore",
+    "trasherymachines:lead_block",
+    "trasherymachines:silver_ore"
+  ]
+}

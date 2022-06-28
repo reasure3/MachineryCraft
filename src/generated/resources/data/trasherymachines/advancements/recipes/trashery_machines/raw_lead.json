@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "trasherymachines:raw_lead"
+    ]
+  },
+  "criteria": {
+    "has_storage_blocks_raw_lead": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:storage_blocks/raw_lead"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trasherymachines:raw_lead"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_storage_blocks_raw_lead",
+      "has_the_recipe"
+    ]
+  ]
+}

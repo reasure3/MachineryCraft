@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "trasherymachines:raw_silver"
+    ]
+  },
+  "criteria": {
+    "has_storage_blocks_raw_silver": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:storage_blocks/raw_silver"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trasherymachines:raw_silver"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_storage_blocks_raw_silver",
+      "has_the_recipe"
+    ]
+  ]
+}

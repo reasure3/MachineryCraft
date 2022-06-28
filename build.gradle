@@ -18,6 +18,7 @@ plugins {
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: 'org.spongepowered.mixin'
 
 version = version_name
 group = 'com.reasure.trasherymachines' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -36,11 +37,11 @@ minecraft {
         client {
             workingDirectory project.file('run')
 
+            property 'forge.logging.markers', 'REGISTRIES'
+
             // for patchouli
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
-            property 'forge.logging.markers', 'REGISTRIES'
 
             property 'forge.logging.console.level', 'debug'
 
@@ -91,6 +92,10 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
 
             property 'forge.logging.console.level', 'debug'
+
+            // for patchouli
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             args '--mod', 'trasherymachines', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 

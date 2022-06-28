@@ -14,7 +14,7 @@ import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 @Mod.EventBusSubscriber(modid = TrasheryMachines.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
     @SubscribeEvent
-    public static void GatherData(GatherDataEvent event) {
+    public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper helper = event.getExistingFileHelper();
 

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "trasherymachines:tin_ingotfrom_storage_blocks_tin"
+    ]
+  },
+  "criteria": {
+    "has_storage_blocks_tin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:storage_blocks/tin"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trasherymachines:tin_ingotfrom_storage_blocks_tin"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_storage_blocks_tin",
+      "has_the_recipe"
+    ]
+  ]
+}

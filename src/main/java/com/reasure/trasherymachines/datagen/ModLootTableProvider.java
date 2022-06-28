@@ -2,6 +2,8 @@ package com.reasure.trasherymachines.datagen;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
+import com.reasure.trasherymachines.setup.ModBlocks;
+import com.reasure.trasherymachines.setup.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.data.loot.LootTableProvider;
@@ -19,7 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModLootTableProvider extends LootTableProvider {
@@ -41,11 +42,23 @@ public class ModLootTableProvider extends LootTableProvider {
     }
 
     public static class ModBlockLoot extends BlockLoot {
-        private final static List<Block> knownBlocks = new ArrayList<>();
+        private static final List<Block> knownBlocks = new ArrayList<>();
 
         @Override
         protected void addTables() {
+            dropSelf(ModBlocks.RAW_TIN_BLOCK.get());
+            dropSelf(ModBlocks.TIN_BLOCK.get());
+            dropSelf(ModBlocks.RAW_LEAD_BLOCK.get());
+            dropSelf(ModBlocks.LEAD_BLOCK.get());
+            dropSelf(ModBlocks.RAW_SILVER_BLOCK.get());
+            dropSelf(ModBlocks.SILVER_BLOCK.get());
 
+            add(ModBlocks.TIN_ORE.get(), ore -> createOreDrop(ore, ModItems.RAW_TIN.get()));
+            add(ModBlocks.DEEPSLATE_TIN_ORE.get(), ore -> createOreDrop(ore, ModItems.RAW_TIN.get()));
+            add(ModBlocks.LEAD_ORE.get(), ore -> createOreDrop(ore, ModItems.RAW_LEAD.get()));
+            add(ModBlocks.DEEPSLATE_LEAD_ORE.get(), ore -> createOreDrop(ore, ModItems.RAW_LEAD.get()));
+            add(ModBlocks.SILVER_ORE.get(), ore -> createOreDrop(ore, ModItems.RAW_SILVER.get()));
+            add(ModBlocks.DEEPSLATE_SILVER_ORE.get(), ore -> createOreDrop(ore, ModItems.RAW_SILVER.get()));
         }
 
         @NotNull
@@ -55,7 +68,7 @@ public class ModLootTableProvider extends LootTableProvider {
         }
 
         @Override
-        protected void add(@NotNull Block block, @NotNull Function<Block, LootTable.Builder> builder) {
+        protected void add(@NotNull Block block, @NotNull LootTable.Builder builder) {
             super.add(block, builder);
             knownBlocks.add(block);
         }
