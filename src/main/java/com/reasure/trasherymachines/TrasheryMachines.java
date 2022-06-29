@@ -1,6 +1,7 @@
 package com.reasure.trasherymachines;
 
 import com.mojang.logging.LogUtils;
+import com.reasure.trasherymachines.item.ModTiers;
 import com.reasure.trasherymachines.setup.ModBlocks;
 import com.reasure.trasherymachines.setup.ModItems;
 import com.reasure.trasherymachines.setup.ModTags;
@@ -25,6 +26,7 @@ public class TrasheryMachines {
         ModBlocks.register(modBus);
 
         ModTags.init();
+        ModTiers.register();
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

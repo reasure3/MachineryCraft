@@ -17,6 +17,10 @@ public class ModTags {
     public static final class Blocks {
         private static void init() {}
 
+        public static final TagKey<Block> NEEDS_TIN_TOOL = modTag("needs_tin_tool");
+        public static final TagKey<Block> NEEDS_LEAD_TOOL = modTag("needs_lead_tool");
+        public static final TagKey<Block> NEEDS_SILVER_TOOL = modTag("needs_silver_tool");
+
         public static final TagKey<Block> ORES_TIN = forgeTag("ores/tin");
         public static final TagKey<Block> ORES_LEAD = forgeTag("ores/lead");
         public static final TagKey<Block> ORES_SILVER = forgeTag("ores/silver");

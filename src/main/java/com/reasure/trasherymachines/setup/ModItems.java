@@ -39,7 +39,7 @@ public class ModItems {
     public static final RegistryObject<Item> SILVER_NUGGET = ITEMS.register("silver_nugget", () ->
             new Item(new Item.Properties().tab(ModItemGroup.MAIN_ITEM_GROUP)));
 
-    public static final RegistryObject<DebugItem> DEBUG_ITEM = ITEMS.register("debug_item", () ->
+    public static final RegistryObject<Item> DEBUG_ITEM = ITEMS.register("debug_item", () ->
             new DebugItem(new Item.Properties().tab(ModItemGroup.MAIN_ITEM_GROUP)));
 
     public static void register(IEventBus modBus) {
