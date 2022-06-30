@@ -30,6 +30,22 @@ public class ModEngLanguageProvider extends BaseLanguageProvider {
         add(ModItems.RAW_SILVER.get(), "Raw Silver");
         add(ModItems.SILVER_INGOT.get(), "Silver Ingot");
         add(ModItems.SILVER_NUGGET.get(), "Silver Nugget");
+
+        add(ModItems.TIN_SWORD.get(), "Tin Sword");
+        add(ModItems.TIN_SHOVEL.get(), "Tin Shovel");
+        add(ModItems.TIN_PICKAXE.get(), "Tin Pickaxe");
+        add(ModItems.TIN_AXE.get(), "Tin Axe");
+        add(ModItems.TIN_HOE.get(), "Tin Hoe");
+        add(ModItems.LEAD_SWORD.get(), "Lead Sword");
+        add(ModItems.LEAD_SHOVEL.get(), "Lead Shovel");
+        add(ModItems.LEAD_PICKAXE.get(), "Lead Pickaxe");
+        add(ModItems.LEAD_AXE.get(), "Lead Axe");
+        add(ModItems.LEAD_HOE.get(), "Lead Hoe");
+        add(ModItems.SILVER_SWORD.get(), "Silver Sword");
+        add(ModItems.SILVER_SHOVEL.get(), "Silver Shovel");
+        add(ModItems.SILVER_PICKAXE.get(), "Silver Pickaxe");
+        add(ModItems.SILVER_AXE.get(), "Silver Axe");
+        add(ModItems.SILVER_HOE.get(), "Silver Hoe");
     }
 
     private void addBlocks() {

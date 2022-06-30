@@ -11,7 +11,9 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
@@ -50,6 +52,10 @@ public class ModRecipeProvider extends RecipeProvider {
         unpackingWithGroup(consumer, ModTags.Items.STORAGE_BLOCKS_SILVER, ModItems.SILVER_INGOT.get(), 9, "silver_ingot");
         ninePacking(consumer, ModTags.Items.RAW_MATERIALS_SILVER, ModBlocks.RAW_SILVER_BLOCK.get());
         unpacking(consumer, ModTags.Items.STORAGE_BLOCKS_RAW_SILVER, ModItems.RAW_SILVER.get(), 9);
+
+        tools(consumer, ModTags.Items.INGOTS_TIN, ModItems.TIN_SWORD.get(), ModItems.TIN_SHOVEL.get(), ModItems.TIN_PICKAXE.get(), ModItems.TIN_AXE.get(), ModItems.TIN_HOE.get());
+        tools(consumer, ModTags.Items.INGOTS_LEAD, ModItems.LEAD_SWORD.get(), ModItems.LEAD_SHOVEL.get(), ModItems.LEAD_PICKAXE.get(), ModItems.LEAD_AXE.get(), ModItems.LEAD_HOE.get());
+        tools(consumer, ModTags.Items.INGOTS_SILVER, ModItems.SILVER_SWORD.get(), ModItems.SILVER_SHOVEL.get(), ModItems.SILVER_PICKAXE.get(), ModItems.SILVER_AXE.get(), ModItems.SILVER_HOE.get());
     }
 
     private void oreCooking(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike result, float experience, int cookingTime, String group) {
@@ -85,9 +91,73 @@ public class ModRecipeProvider extends RecipeProvider {
         unpacking(consumer, ingredients, result, resultCount, getItemName(result) + "from_" + getTagName(ingredients), group);
     }
 
-    private void unpacking(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike result, int resultCount, String recipeName, String group) {
+    private void unpacking(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike result, int resultCount, String recipeName, @Nullable String group) {
         ShapelessRecipeBuilder.shapeless(result, resultCount).requires(ingredients).group(group).unlockedBy(getHasName(ingredients), has(ingredients))
                 .save(consumer, modLoc(recipeName));
+    }
+
+    private void sword(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike sword) {
+        ShapedRecipeBuilder.shaped(sword)
+                .define('#', Tags.Items.RODS_WOODEN)
+                .define('X', ingredients)
+                .pattern("X")
+                .pattern("X")
+                .pattern("#")
+                .unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer);
+    }
+
+    private void shovel(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike shovel) {
+        ShapedRecipeBuilder.shaped(shovel)
+                .define('#', Tags.Items.RODS_WOODEN)
+                .define('X', ingredients)
+                .pattern("X")
+                .pattern("#")
+                .pattern("#")
+                .unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer);
+    }
+
+    private void pickaxe(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike pickaxe) {
+        ShapedRecipeBuilder.shaped(pickaxe)
+                .define('#', Tags.Items.RODS_WOODEN)
+                .define('X', ingredients)
+                .pattern("XXX")
+                .pattern(" # ")
+                .pattern(" # ")
+                .unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer);
+    }
+
+    private void axe(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike axe) {
+        ShapedRecipeBuilder.shaped(axe)
+                .define('#', Tags.Items.RODS_WOODEN)
+                .define('X', ingredients)
+                .pattern("XX")
+                .pattern("X#")
+                .pattern(" #")
+                .unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer);
+    }
+
+    private void hoe(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike hoe) {
+        ShapedRecipeBuilder.shaped(hoe)
+                .define('#', Tags.Items.RODS_WOODEN)
+                .define('X', ingredients)
+                .pattern("XX")
+                .pattern(" #")
+                .pattern(" #")
+                .unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer);
+    }
+
+    private void tools(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients,
+                       @Nullable ItemLike sword, @Nullable ItemLike shovel, @Nullable ItemLike pickaxe, @Nullable ItemLike axe, @Nullable ItemLike hoe) {
+        if (sword != null) sword(consumer, ingredients, sword);
+        if (shovel != null) shovel(consumer, ingredients, shovel);
+        if (pickaxe != null) pickaxe(consumer, ingredients, pickaxe);
+        if (axe != null) axe(consumer, ingredients, axe);
+        if (hoe != null) hoe(consumer, ingredients, hoe);
     }
 
     private ResourceLocation modLoc(String path) {

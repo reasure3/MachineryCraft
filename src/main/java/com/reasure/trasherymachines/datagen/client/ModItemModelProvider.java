@@ -9,8 +9,8 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ModItemModelProvider extends ItemModelProvider {
-    private final ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
-    private final ModelFile itemHandhelds = getExistingFile(mcLoc("item/handheld"));
+    private final static ModelFile itemGenerated = new ModelFile.UncheckedModelFile("item/generated");
+    private final static ModelFile itemHandheld = new ModelFile.UncheckedModelFile("item/handheld");
 
     public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
         super(generator, TrasheryMachines.MODID, existingFileHelper);
@@ -45,6 +45,21 @@ public class ModItemModelProvider extends ItemModelProvider {
         build(ModItems.SILVER_INGOT.getId().getPath(), itemGenerated);
         build(ModItems.SILVER_NUGGET.getId().getPath(), itemGenerated);
 
+        build(ModItems.TIN_SWORD.getId().getPath(), itemHandheld);
+        build(ModItems.TIN_SHOVEL.getId().getPath(), itemHandheld);
+        build(ModItems.TIN_PICKAXE.getId().getPath(), itemHandheld);
+        build(ModItems.TIN_AXE.getId().getPath(), itemHandheld);
+        build(ModItems.TIN_HOE.getId().getPath(), itemHandheld);
+        build(ModItems.LEAD_SWORD.getId().getPath(), itemHandheld);
+        build(ModItems.LEAD_SHOVEL.getId().getPath(), itemHandheld);
+        build(ModItems.LEAD_PICKAXE.getId().getPath(), itemHandheld);
+        build(ModItems.LEAD_AXE.getId().getPath(), itemHandheld);
+        build(ModItems.LEAD_HOE.getId().getPath(), itemHandheld);
+        build(ModItems.SILVER_SWORD.getId().getPath(), itemHandheld);
+        build(ModItems.SILVER_SHOVEL.getId().getPath(), itemHandheld);
+        build(ModItems.SILVER_PICKAXE.getId().getPath(), itemHandheld);
+        build(ModItems.SILVER_AXE.getId().getPath(), itemHandheld);
+        build(ModItems.SILVER_HOE.getId().getPath(), itemHandheld);
     }
 
     private void block(String itemPath) {
@@ -56,6 +71,6 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private void build(String path, ModelFile parent) {
-        getBuilder(path).parent(parent).texture("layer0", "item/" + path);
+        getBuilder(path).parent(parent).texture("layer0", modLoc("item/" + path));
     }
 }

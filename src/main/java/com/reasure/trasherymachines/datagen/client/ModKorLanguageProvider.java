@@ -30,6 +30,22 @@ public class ModKorLanguageProvider extends BaseLanguageProvider {
         add(ModItems.RAW_SILVER.get(), "은 원석");
         add(ModItems.SILVER_INGOT.get(), "은 주괴");
         add(ModItems.SILVER_NUGGET.get(), "은 조각");
+
+        add(ModItems.TIN_SWORD.get(), "주석 검");
+        add(ModItems.TIN_SHOVEL.get(), "주석 삽");
+        add(ModItems.TIN_PICKAXE.get(), "주석 곡괭이");
+        add(ModItems.TIN_AXE.get(), "주석 도끼");
+        add(ModItems.TIN_HOE.get(), "주석 괭이");
+        add(ModItems.LEAD_SWORD.get(), "납 검");
+        add(ModItems.LEAD_SHOVEL.get(), "납 삽");
+        add(ModItems.LEAD_PICKAXE.get(), "납 곡괭이");
+        add(ModItems.LEAD_AXE.get(), "납 도끼");
+        add(ModItems.LEAD_HOE.get(), "납 괭이");
+        add(ModItems.SILVER_SWORD.get(), "은 검");
+        add(ModItems.SILVER_SHOVEL.get(), "은 삽");
+        add(ModItems.SILVER_PICKAXE.get(), "은 곡괭이");
+        add(ModItems.SILVER_AXE.get(), "은 도끼");
+        add(ModItems.SILVER_HOE.get(), "은 괭이");
     }
 
     private void addBlocks() {
