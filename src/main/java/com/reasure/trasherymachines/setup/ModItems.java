@@ -2,8 +2,11 @@ package com.reasure.trasherymachines.setup;
 
 import com.reasure.trasherymachines.TrasheryMachines;
 import com.reasure.trasherymachines.item.DebugItem;
+import com.reasure.trasherymachines.item.ModArmorMaterials;
 import com.reasure.trasherymachines.item.ModItemGroup;
 import com.reasure.trasherymachines.item.ModTiers;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -100,8 +103,44 @@ public class ModItems {
             new HoeItem(ModTiers.SILVER, -2, -0.5f,
                     new Item.Properties().tab(ModItemGroup.MAIN_ITEM_GROUP)));
 
+    public static final RegistryObject<Item> LEAD_HELMET = ITEMS.register("lead_helmet", () ->
+            new ArmorItem(ModArmorMaterials.LEAD, EquipmentSlot.HEAD,
+                    new Item.Properties().tab(ModItemGroup.MAIN_ITEM_GROUP)));
+
+    public static final RegistryObject<Item> LEAD_CHESTPLATE = ITEMS.register("lead_chestplate", () ->
+            new ArmorItem(ModArmorMaterials.LEAD, EquipmentSlot.CHEST,
+                    new Item.Properties().tab(ModItemGroup.MAIN_ITEM_GROUP)));
+
+    public static final RegistryObject<Item> LEAD_LEGGINGS = ITEMS.register("lead_leggings", () ->
+            new ArmorItem(ModArmorMaterials.LEAD, EquipmentSlot.LEGS,
+                    new Item.Properties().tab(ModItemGroup.MAIN_ITEM_GROUP)));
+
+    public static final RegistryObject<Item> LEAD_BOOTS = ITEMS.register("lead_boots", () ->
+            new ArmorItem(ModArmorMaterials.LEAD, EquipmentSlot.FEET,
+                    new Item.Properties().tab(ModItemGroup.MAIN_ITEM_GROUP)));
+
+    public static final RegistryObject<Item> SILVER_HELMET = ITEMS.register("silver_helmet", () ->
+            new ArmorItem(ModArmorMaterials.SILVER, EquipmentSlot.HEAD,
+                    new Item.Properties().tab(ModItemGroup.MAIN_ITEM_GROUP)));
+
+    public static final RegistryObject<Item> SILVER_CHESTPLATE = ITEMS.register("silver_chestplate", () ->
+            new ArmorItem(ModArmorMaterials.SILVER, EquipmentSlot.CHEST,
+                    new Item.Properties().tab(ModItemGroup.MAIN_ITEM_GROUP)));
+
+    public static final RegistryObject<Item> SILVER_LEGGINGS = ITEMS.register("silver_leggings", () ->
+            new ArmorItem(ModArmorMaterials.SILVER, EquipmentSlot.LEGS,
+                    new Item.Properties().tab(ModItemGroup.MAIN_ITEM_GROUP)));
+
+    public static final RegistryObject<Item> SILVER_BOOTS = ITEMS.register("silver_boots", () ->
+            new ArmorItem(ModArmorMaterials.SILVER, EquipmentSlot.FEET,
+                    new Item.Properties().tab(ModItemGroup.MAIN_ITEM_GROUP)));
+
+    public static final RegistryObject<Item> SILVER_HORSE_ARMOR = ITEMS.register("silver_horse_armor", () ->
+            new HorseArmorItem(9, new ResourceLocation(TrasheryMachines.MODID, "textures/entity/horse/armor/horse_armor_silver.png"),
+                    new Item.Properties().stacksTo(1).tab(ModItemGroup.MAIN_ITEM_GROUP)));
+
     public static final RegistryObject<Item> DEBUG_ITEM = ITEMS.register("debug_item", () ->
-            new DebugItem(new Item.Properties().tab(ModItemGroup.MAIN_ITEM_GROUP)));
+            new DebugItem(new Item.Properties()));
 
     public static void register(IEventBus modBus) {
         ITEMS.register(modBus);
