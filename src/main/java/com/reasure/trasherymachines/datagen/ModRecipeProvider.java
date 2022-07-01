@@ -56,6 +56,9 @@ public class ModRecipeProvider extends RecipeProvider {
         tools(consumer, ModTags.Items.INGOTS_TIN, ModItems.TIN_SWORD.get(), ModItems.TIN_SHOVEL.get(), ModItems.TIN_PICKAXE.get(), ModItems.TIN_AXE.get(), ModItems.TIN_HOE.get());
         tools(consumer, ModTags.Items.INGOTS_LEAD, ModItems.LEAD_SWORD.get(), ModItems.LEAD_SHOVEL.get(), ModItems.LEAD_PICKAXE.get(), ModItems.LEAD_AXE.get(), ModItems.LEAD_HOE.get());
         tools(consumer, ModTags.Items.INGOTS_SILVER, ModItems.SILVER_SWORD.get(), ModItems.SILVER_SHOVEL.get(), ModItems.SILVER_PICKAXE.get(), ModItems.SILVER_AXE.get(), ModItems.SILVER_HOE.get());
+
+        armors(consumer, ModTags.Items.INGOTS_LEAD, ModItems.LEAD_HELMET.get(), ModItems.LEAD_CHESTPLATE.get(), ModItems.LEAD_LEGGINGS.get(), ModItems.LEAD_BOOTS.get());
+        armors(consumer, ModTags.Items.INGOTS_SILVER, ModItems.SILVER_HELMET.get(), ModItems.SILVER_CHESTPLATE.get(), ModItems.SILVER_LEGGINGS.get(), ModItems.SILVER_BOOTS.get());
     }
 
     private void oreCooking(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike result, float experience, int cookingTime, String group) {
@@ -158,6 +161,52 @@ public class ModRecipeProvider extends RecipeProvider {
         if (pickaxe != null) pickaxe(consumer, ingredients, pickaxe);
         if (axe != null) axe(consumer, ingredients, axe);
         if (hoe != null) hoe(consumer, ingredients, hoe);
+    }
+
+    private void helmet(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike helmet) {
+        ShapedRecipeBuilder.shaped(helmet)
+                .define('X', ingredients)
+                .pattern("XXX")
+                .pattern("X X")
+                .unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer);
+    }
+
+    private void chestplate(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike chestplate) {
+        ShapedRecipeBuilder.shaped(chestplate)
+                .define('X', ingredients)
+                .pattern("X X")
+                .pattern("XXX")
+                .pattern("XXX")
+                .unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer);
+    }
+
+    private void leggings(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike leggings) {
+        ShapedRecipeBuilder.shaped(leggings)
+                .define('X', ingredients)
+                .pattern("XXX")
+                .pattern("X X")
+                .pattern("X X")
+                .unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer);
+    }
+
+    private void boots(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients, ItemLike boots) {
+        ShapedRecipeBuilder.shaped(boots)
+                .define('X', ingredients)
+                .pattern("X X")
+                .pattern("X X")
+                .unlockedBy(getHasName(ingredients), has(ingredients))
+                .save(consumer);
+    }
+
+    private void armors(Consumer<FinishedRecipe> consumer, TagKey<Item> ingredients,
+                        @Nullable ItemLike helmet, @Nullable ItemLike chestplate, @Nullable ItemLike leggings, @Nullable ItemLike boots) {
+        if (helmet != null) helmet(consumer, ingredients, helmet);
+        if (chestplate != null) chestplate(consumer, ingredients, chestplate);
+        if (leggings != null) leggings(consumer, ingredients, leggings);
+        if (boots != null) boots(consumer, ingredients, boots);
     }
 
     private ResourceLocation modLoc(String path) {

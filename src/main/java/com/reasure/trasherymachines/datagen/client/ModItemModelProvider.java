@@ -60,6 +60,17 @@ public class ModItemModelProvider extends ItemModelProvider {
         build(ModItems.SILVER_PICKAXE.getId().getPath(), itemHandheld);
         build(ModItems.SILVER_AXE.getId().getPath(), itemHandheld);
         build(ModItems.SILVER_HOE.getId().getPath(), itemHandheld);
+
+        build(ModItems.LEAD_HELMET.getId().getPath(), itemGenerated);
+        build(ModItems.LEAD_CHESTPLATE.getId().getPath(), itemGenerated);
+        build(ModItems.LEAD_LEGGINGS.getId().getPath(), itemGenerated);
+        build(ModItems.LEAD_BOOTS.getId().getPath(), itemGenerated);
+        build(ModItems.SILVER_HELMET.getId().getPath(), itemGenerated);
+        build(ModItems.SILVER_CHESTPLATE.getId().getPath(), itemGenerated);
+        build(ModItems.SILVER_LEGGINGS.getId().getPath(), itemGenerated);
+        build(ModItems.SILVER_BOOTS.getId().getPath(), itemGenerated);
+
+        build(ModItems.SILVER_HORSE_ARMOR.getId().getPath(), itemGenerated);
     }
 
     private void block(String itemPath) {

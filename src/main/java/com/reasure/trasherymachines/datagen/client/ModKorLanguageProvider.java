@@ -63,5 +63,16 @@ public class ModKorLanguageProvider extends BaseLanguageProvider {
         add(ModBlocks.DEEPSLATE_SILVER_ORE.get(), "심층암 은 광석");
         add(ModBlocks.RAW_SILVER_BLOCK.get(), "은 원석 블록");
         add(ModBlocks.SILVER_BLOCK.get(), "은 블록");
+
+        add(ModItems.LEAD_HELMET.get(), "납 투구");
+        add(ModItems.LEAD_CHESTPLATE.get(), "납 흉갑");
+        add(ModItems.LEAD_LEGGINGS.get(), "납 레깅스");
+        add(ModItems.LEAD_BOOTS.get(), "납 부츠");
+        add(ModItems.SILVER_HELMET.get(), "은 투구");
+        add(ModItems.SILVER_CHESTPLATE.get(), "은 흉갑");
+        add(ModItems.SILVER_LEGGINGS.get(), "은 레깅스");
+        add(ModItems.SILVER_BOOTS.get(), "은 부츠");
+
+        add(ModItems.SILVER_HORSE_ARMOR.get(), "은 말 갑옷");
     }
 }

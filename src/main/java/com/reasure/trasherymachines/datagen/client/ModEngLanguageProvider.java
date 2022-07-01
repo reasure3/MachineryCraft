@@ -46,6 +46,17 @@ public class ModEngLanguageProvider extends BaseLanguageProvider {
         add(ModItems.SILVER_PICKAXE.get(), "Silver Pickaxe");
         add(ModItems.SILVER_AXE.get(), "Silver Axe");
         add(ModItems.SILVER_HOE.get(), "Silver Hoe");
+
+        add(ModItems.LEAD_HELMET.get(), "Lead Helmet");
+        add(ModItems.LEAD_CHESTPLATE.get(), "Lead Chestplate");
+        add(ModItems.LEAD_LEGGINGS.get(), "Lead Leggings");
+        add(ModItems.LEAD_BOOTS.get(), "Lead Boots");
+        add(ModItems.SILVER_HELMET.get(), "Silver Helmet");
+        add(ModItems.SILVER_CHESTPLATE.get(), "Silver Chestplate");
+        add(ModItems.SILVER_LEGGINGS.get(), "Silver Leggings");
+        add(ModItems.SILVER_BOOTS.get(), "Silver Boots");
+
+        add(ModItems.SILVER_HORSE_ARMOR.get(), "Silver Horse Armor");
     }
 
     private void addBlocks() {
