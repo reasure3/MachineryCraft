@@ -21,8 +21,8 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
 
 version = version_name
-group = 'com.reasure.trasherymachines' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'trasherymachines'
+group = 'com.reasure.machinerycraft' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'machinerycraft'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -45,10 +45,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'trasherymachines'
+            property 'forge.enabledGameTestNamespaces', 'machinerycraft'
 
             mods {
-                trasherymachines {
+                machinerycraft {
                     source sourceSets.main
                 }
             }
@@ -61,10 +61,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'trasherymachines'
+            property 'forge.enabledGameTestNamespaces', 'machinerycraft'
 
             mods {
-                trasherymachines {
+                machinerycraft {
                     source sourceSets.main
                 }
             }
@@ -77,10 +77,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'trasherymachines'
+            property 'forge.enabledGameTestNamespaces', 'machinerycraft'
 
             mods {
-                trasherymachines {
+                machinerycraft {
                     source sourceSets.main
                 }
             }
@@ -97,10 +97,10 @@ minecraft {
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
-            args '--mod', 'trasherymachines', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'machinerycraft', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                trasherymachines {
+                machinerycraft {
                     source sourceSets.main
                 }
             }
@@ -126,7 +126,7 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${mc_version}-40.1.52"
+    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
@@ -148,7 +148,7 @@ dependencies {
 // Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
-        attributes(["Specification-Title"     : "trasherymachines",
+        attributes(["Specification-Title"     : "machinerycraft",
                     "Specification-Vendor"    : "reasure",
                     "Specification-Version"   : "1", // We are version 1 of ourselves
                     "Implementation-Title"    : project.name,

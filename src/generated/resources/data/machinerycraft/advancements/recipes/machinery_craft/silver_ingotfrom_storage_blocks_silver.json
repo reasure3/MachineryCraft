@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "machinerycraft:silver_ingotfrom_storage_blocks_silver"
+    ]
+  },
+  "criteria": {
+    "has_storage_blocks_silver": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:storage_blocks/silver"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "machinerycraft:silver_ingotfrom_storage_blocks_silver"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_storage_blocks_silver",
+      "has_the_recipe"
+    ]
+  ]
+}

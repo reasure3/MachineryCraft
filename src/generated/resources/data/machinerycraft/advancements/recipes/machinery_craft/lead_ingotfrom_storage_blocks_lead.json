@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "machinerycraft:lead_ingotfrom_storage_blocks_lead"
+    ]
+  },
+  "criteria": {
+    "has_storage_blocks_lead": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:storage_blocks/lead"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "machinerycraft:lead_ingotfrom_storage_blocks_lead"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_storage_blocks_lead",
+      "has_the_recipe"
+    ]
+  ]
+}

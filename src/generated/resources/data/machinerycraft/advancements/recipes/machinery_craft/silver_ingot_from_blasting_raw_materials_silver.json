@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "machinerycraft:silver_ingot_from_blasting_raw_materials_silver"
+    ]
+  },
+  "criteria": {
+    "has_raw_materials_silver": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:raw_materials/silver"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "machinerycraft:silver_ingot_from_blasting_raw_materials_silver"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_materials_silver",
+      "has_the_recipe"
+    ]
+  ]
+}

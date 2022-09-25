@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "machinerycraft:item/tin_hoe"
+  }
+}

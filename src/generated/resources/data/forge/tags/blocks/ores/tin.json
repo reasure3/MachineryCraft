@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "trasherymachines:tin_ore",
-    "trasherymachines:deepslate_tin_ore"
+    "machinerycraft:tin_ore",
+    "machinerycraft:deepslate_tin_ore"
   ]
 }

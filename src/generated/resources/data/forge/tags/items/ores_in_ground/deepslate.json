@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "trasherymachines:deepslate_tin_ore",
-    "trasherymachines:deepslate_lead_ore",
-    "trasherymachines:deepslate_silver_ore"
+    "machinerycraft:deepslate_tin_ore",
+    "machinerycraft:deepslate_lead_ore",
+    "machinerycraft:deepslate_silver_ore"
   ]
 }

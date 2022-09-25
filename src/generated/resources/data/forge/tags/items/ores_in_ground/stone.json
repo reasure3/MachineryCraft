@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "trasherymachines:tin_ore",
-    "trasherymachines:lead_block",
-    "trasherymachines:silver_ore"
+    "machinerycraft:tin_ore",
+    "machinerycraft:lead_block",
+    "machinerycraft:silver_ore"
   ]
 }
